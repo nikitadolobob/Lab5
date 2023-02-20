@@ -1,0 +1,29 @@
+{
+  "Movies": [
+    {
+      "id": "1",
+      "name" :"Back to the future",
+      "coordinates": {
+        "x": "3",
+        "y": "3.1415"
+      },
+      "creationDate": "2023-02-12T19:06:57.841735504+03:00[Europe/Moscow]",
+      "oscarsCount": "4",
+      "genre": "SCIENCE_FICTION",
+      "mpaaRating": "PG",
+      "director": {
+        "name": "Bob Gale",
+        "weight": "68",
+        "eyeColor": "GREEN",
+        "hairColor": "BLACK",
+        "nationality": "GERMANY",
+        "location": {
+          "x": "5.345",
+          "y": "675",
+          "z": "10.2"
+        }
+
+      }
+    }
+  ]
+}
