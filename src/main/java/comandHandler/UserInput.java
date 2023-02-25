@@ -17,6 +17,11 @@ public class UserInput {
     }
     public static Scanner sc;
     public UserInput(){}
+
+
+    public static CommandSystem commandSystem = new CommandSystem();
+    public static Controller controller = new Controller();
+
     private static String removeFormer(String unformedRemover){
         String[] former = unformedRemover.split(" ");
         Vector<String> vector = new Vector<>();
@@ -48,11 +53,22 @@ public class UserInput {
             String s = sc.nextLine();
             String a = removeFormer(s);
             String[] vector = a.split(" ");
+
+
+            /*
+            CommandSystem commandSystem = new CommandSystem();
+            Controller controller = new Controller();
+            Command remove = new RemoveById(commandSystem, 5);
+
+            controller.setCommand(remove);
+            controller.executeCommand();
+            */
+
             for(Commands i : Commands.values()){
                 if(i.getCommandName().equals(vector[0])){
                     isDumb = false;
-                    if(vector[0].equals("execute_script") || vector[0].equals("update") || vector[0].equals("remove_by_id") || vector[0].equals("count_les_than_genre") || vector[0].equals("count_greater_than_gener") || vector[0].equals("filter_greater_than_gener")){
-                        if(vector[0].equals("execute_script") || vector[0].equals("count_les_than_genre") || vector[0].equals("count_greater_than_gener") || vector[0].equals("filter_greater_than_gener")){
+                    if(vector[0].equals("execute_script") || vector[0].equals("update") || vector[0].equals("remove_by_id") || vector[0].equals("count_les_than_genre") || vector[0].equals("count_greater_than_genre") || vector[0].equals("filter_greater_than_genre")){
+                        if(vector[0].equals("execute_script") || vector[0].equals("count_les_than_genre") || vector[0].equals("count_greater_than_genre") || vector[0].equals("filter_greater_than_genre")){
                             i.runCommand(vector[1]);
                         }
                         else{
@@ -92,7 +108,7 @@ public class UserInput {
             while (name.equals("")) {
                 messageWriter("Enter movie name");
                 name = sc.nextLine();
-                messageWriter("name is" + name);
+                messageWriter("name is " + name);
             }
             movie.setName(name);
 
