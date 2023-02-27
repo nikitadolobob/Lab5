@@ -7,7 +7,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.ZonedDateTime;
@@ -15,27 +14,29 @@ import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 
 /**
- * The type Json input.
+ * Класс для считывания данных из JSON файла и их помещения в коллекцию, с которой работает приложение.
  */
 public class JSONInput {
+
     /**
-     * The Fille name.
+     * Имя считываемого файла
      */
     public String filleName;
 
     /**
-     * Instantiates a new Json input.
+     * Конструктор для экземляра класса, чтобы считывать с конкретного файла
      *
-     * @param filleName the fille name
+     * @param filleName - имя файла, с которым будет работать экземпляр класса
      */
     public JSONInput(String filleName){
         this.filleName = filleName;
     }
 
+
     /**
-     * Read movie.
+     * Метод для обработки конкретного фильма и перевода его из JSON файла в коллекцию в качестве эллемента типа Class Movie
      *
-     * @param jsonObject the json object
+     * @param jsonObject - поступающий методу на вход фильм в формате JSON
      */
     public void readMovie(JSONObject jsonObject){
         try{
@@ -113,8 +114,9 @@ public class JSONInput {
         }
     }
 
+
     /**
-     * Read json.
+     * Метод, переводящий содержимое JSON файла в эллементы коллекции
      */
     public void readJSON()  {
         Object obj = null;

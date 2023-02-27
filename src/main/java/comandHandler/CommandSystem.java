@@ -6,7 +6,13 @@ import model.*;
 
 import java.util.Collections;
 
+/**
+ * Элемент Pattern Command, хранящий методы-реализации всех команд приложения
+ */
 public class CommandSystem {
+    /**
+     * Реализация команды, добавляющей новый фильм в конец коллекции
+     */
     public void add(){
         Movie movie = UserInput.readMovie();
         if(movie == null){
@@ -16,6 +22,10 @@ public class CommandSystem {
         System.out.println("The movie is successfully added");
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, добавляющей новый фильм в конец коллекции, если этот элемент, в соотвествие с переопределённым для класса Movie методом compareTo, окажется строго меньше минимального элемента коллекции
+     */
     public void addIfMin(){
         Movie movie = UserInput.readMovie();
         if(movie == null){
@@ -31,11 +41,21 @@ public class CommandSystem {
         }
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, очищающей коллекцию (в результате коллекция, с которой мы работаем, становится пустой)
+     */
     public void clear(){
             Main.arrayList.clear();
             System.out.println("The collection is empty now");
             System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, выводящей на консоль количество фильмов коллекции, жанр которых, в соответствие с полем genreRating, строго больше заданного жанра
+     *
+     * @param genre Заданный жанр, с которым производится сравнение
+     */
     public void countGreaterThanGenre(String genre){
         MovieGenre eGenre = null;
         int maxGenreCount = 0;
@@ -56,6 +76,12 @@ public class CommandSystem {
         System.out.println("Here you go, bro. There are: " + maxGenreCount + " of the more genred movies in the collection!");
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, выводящей на консоль количество фильмов коллекции, жанр которых, в соответствие с полем genreRating, строго меньше заданного жанра
+     *
+     * @param genre заданный жанр, с которым производится сравнение
+     */
     public void countLessThanGenre(String genre){
         MovieGenre eGenre = null;
         int minGenreCount = 0;
@@ -76,15 +102,31 @@ public class CommandSystem {
         System.out.println("Here you go, bro. There are: " + minGenreCount + " of the less genred movies in the collection!");
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, выполняющей команды из файла, заданного пользователем
+     *
+     * @param filleName имя файла заданного пользователем
+     */
     public void executeScript(String filleName){
         System.out.println("Start reading script" + filleName);
         UserInput userInput = new UserInput(filleName);
         userInput.readCommands();
         System.out.println("Script successfully executed. You may get to entering data by console");
     }
+
+    /**
+     * Реализация команды, завершающей работу приложения без сохранения изменений в файл, за исключением тех, что уже были отдельно сохранены командой save
+     */
     public void exit(){
         System.exit(0);
     }
+
+    /**
+     * Реализация команды, выводящей на консоль фильмы коллекции, жанр которых, в соответствие с полем genreRating, строго больше заданного жанра
+     *
+     * @param genre заданный жанр, с которым производится сравнение
+     */
     public void filterGreaterThanGenre(String genre){
         MovieGenre eGenre = null;
         for(MovieGenre iGenre : MovieGenre.values()){
@@ -106,18 +148,32 @@ public class CommandSystem {
         System.out.println("That's all of them!");
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, выводящей на консоль информацию о каждой команде приложения
+     */
     public void help(){
         for(Commands command : Commands.values()){
             System.out.println(command.commandName + ": " + command.description);
         }
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, выводящей на консоль информацию о коллекции(её размер и класс)
+     */
     public void info(){
         System.out.println("Information about collection:");
         System.out.println("Collection size: " + Main.arrayList.size());
         System.out.println("Collection type: " + Main.arrayList.getClass());
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, удаляющей из коллекции фильм с заданным id
+     *
+     * @param id - значение поля id удаляемого фильма
+     */
     public void removeById(int id){
         if(id <= 0 || id >= Main.arrayList.size()) {
             System.out.println("Id is incorrect. Can not remove element. Try again or enter another command.");
@@ -131,6 +187,10 @@ public class CommandSystem {
         System.out.println("Element is deleted");
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, удаляющей фильм из конца коллекции, если она не пуста
+     */
     public void removeLast(){
         if(Main.arrayList.isEmpty()){
             System.out.println("Can not remove last because collection is empty. Enter your next command");
@@ -140,6 +200,10 @@ public class CommandSystem {
         System.out.println("The last movie of the collection is successfully removed from it");
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, переставляющей элементы коллекции в обратном порядке
+     */
     public void reorder(){
         Collections.reverse(Main.arrayList);
         for(Movie movie : Main.arrayList){
@@ -148,12 +212,20 @@ public class CommandSystem {
         System.out.println("The movies in the collection reversed their order");
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, сохраняющей коллекцию в нынешнем состоянии в стартовый файл
+     */
     public void save(){
         JSONOutput jsonOutput = new JSONOutput(Main.filleName);
         jsonOutput.writeJSON();
         System.out.println("The collection is saved to the file");
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, выводящей на консоль все фильмы коллекции
+     */
     public void show(){
         for(Movie movie : Main.arrayList){
             printMovie(movie);
@@ -162,6 +234,12 @@ public class CommandSystem {
         System.out.println("Command SHOW successfully finished");
         System.out.println("Enter your next command: ");
     }
+
+    /**
+     * Реализация команды, позволяющая пользователю поочередно изменить каждое поле фильма коллекции с заданным id
+     *
+     * @param id - значения поля id фильма, поля которого пользователь будет менять
+     */
     public void update(int id){
         if(id <= 0 || id >= Main.arrayList.size()) {
             System.out.println("Id is incorrect. Can not update element. Try again or enter another command.");
@@ -179,7 +257,11 @@ public class CommandSystem {
         System.out.println("Enter your next command: ");
     }
 
-
+    /**
+     * Метод пыподящий конкретный переданный ему фильм на консоль (поочередно выводит каждое поле заданного фильма)
+     *
+     * @param movie - заданный фильм, поля которого нужно вывести в консоль
+     */
     private void printMovie(Movie movie){
         Coordinates coordinates = movie.getCoordinates();
         Person director = movie.getDirector();

@@ -8,11 +8,27 @@ import org.json.simple.JSONObject;
 
 import java.io.*;
 
+/**
+ * Запись коллекции типа Movie в JSON файл в формате json
+ */
 public class JSONOutput {
+    /**
+     * имя файла, в который мы записываем коллекцию.
+     */
     public String filleName;
+
+    /**
+     * Конструктор экземпляра класса, который будет работать с заданным файлом.
+     *
+     * @param filleName имя данного в работу файла
+     */
     public JSONOutput(String filleName){
         this.filleName = filleName;
     }
+
+    /**
+     * Метод, реализующий прохождение по всем объектам коллекции, конвертацию и запись каждого из поля в JSON вайл
+     */
     public void writeJSON(){
         JSONObject jsonObject = new JSONObject();
         JSONArray movies = new JSONArray();

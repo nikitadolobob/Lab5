@@ -15,10 +15,6 @@ public class Main {
      */
     public static ArrayList<Movie> arrayList = new ArrayList<Movie>();
     /**
-     * Счетчик элементов в коллекции (не нужен)
-     */
-    public static int counter = 0;
-    /**
      * Имя файла, с которого считывается коллекция в формате JSON.
      */
     public static String filleName;

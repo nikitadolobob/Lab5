@@ -10,18 +10,48 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Vector;
 
+/**
+ * Класс, экземпляры которого позволяют работать с командами, введёнными пользователем как с консоли, так и при помощи файла
+ */
 public class UserInput {
     private static String filleName;
+
+    /**
+     * Конструктор экземпляра класса применимый в случае, если пользователь хочет считать команды со своего файла
+     *
+     * @param filleName имя заданного пользователем файла-скрипта
+     */
     public UserInput(String filleName){
         this.filleName = filleName;
     }
+
+    /**
+     * Сканер, для считывания команд пользователя и с консоли, и через файл
+     */
     public static Scanner sc;
+
+    /**
+     * Конструктор экземпляра красса применимый в случае если пользователь хочет вводить команды через консоль
+     */
     public UserInput(){}
 
 
+    /**
+     * Элемент Pattern Command, хранящий реализации всех команд приложения
+     * Нужен здесь для создания экземпляров команд
+     */
     public static CommandSystem commandSystem = new CommandSystem();
+    /**
+     * Элемент Pattern Command, управляющий выбором и исполнением команд
+     * Нужен здесь для выполнения команд
+     */
     public static Controller controller = new Controller();
 
+    /**
+     * Метод, удаляющий из строки лишние пробелы и формирующий из неё строку, в которой между каждым словом ровно один пробел
+     * @param unformedRemover Поступающая на вход строка
+     * @return Сформированная строка, без лишних пробелов
+     */
     private static String removeFormer(String unformedRemover){
         String[] former = unformedRemover.split(" ");
         Vector<String> vector = new Vector<>();
@@ -37,6 +67,10 @@ public class UserInput {
         }
         return a;
     }
+
+    /**
+     * Метод реализующий распознавание и выполнение команд, предварительно выяснив, поступают они через консоль или из файла
+     */
     public void readCommands(){
         if(filleName == null) sc = new Scanner(System.in);
         else {
@@ -53,16 +87,6 @@ public class UserInput {
             String s = sc.nextLine();
             String a = removeFormer(s);
             String[] vector = a.split(" ");
-
-
-            /*
-            CommandSystem commandSystem = new CommandSystem();
-            Controller controller = new Controller();
-            Command remove = new RemoveById(commandSystem, 5);
-
-            controller.setCommand(remove);
-            controller.executeCommand();
-            */
 
             for(Commands i : Commands.values()){
                 if(i.getCommandName().equals(vector[0])){
@@ -98,18 +122,27 @@ public class UserInput {
             sc = new Scanner(System.in);
         }
     }
-    
+
+    /**
+     * Метод выводящий пользователю сообщения, помогающие ему ориентироваться в своих дальнейших действиях в приложении
+     *
+     * @param s выводимое сообщение
+     */
     public static void messageWriter(String s){
         if(filleName == null){
             System.out.println(s);
         }
     }
 
+    /**
+     * Метод, считыващий введённые пользователем данные заполняющий ими поля экземпляра класса Movie
+     *
+     * @return возвращает заполненный экземпляр класса Movie
+     */
     public static Movie readMovie(){
 
         Movie movie = new Movie();
-        Main.counter = Main.arrayList.size();
-        movie.setId(Main.counter + 1);
+        movie.setId(Main.arrayList.size() + 1);
 
         try {
             String name = "";
@@ -231,27 +264,6 @@ public class UserInput {
             }
             director.setWeight(weight);
 
-            /*
-            String rating = null;
-            boolean isAnAss = true;
-            while (isAnAss && rating == null) {
-                messageWriter("Choose one of the given ratings and enter it (in caps)");
-                for (MpaaRating mpaaRating : MpaaRating.values()) {
-                    messageWriter(mpaaRating.name());
-                }
-                rating = sc.nextLine();
-                for (MpaaRating mpaaRating : MpaaRating.values()) {
-                    if (mpaaRating.name().equals(rating)) {
-                        movie.setMpaaRating(mpaaRating);
-                        isAnAss = false;
-                    }
-                }
-                if (isAnAss && !rating.equals("")) {
-                    rating = null;
-                    messageWriter("You either couldn't realise how to type the exact thing i asked you to type or just are an asshole. You have a list of options. Choose one and type it precisely and in caps");
-                }
-            }
-             */
             String eColour = null;
             boolean isIncorrect = true;
             while (isIncorrect && eColour == null){
