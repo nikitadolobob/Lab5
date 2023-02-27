@@ -38,85 +38,101 @@ public class JSONInput {
      * @param jsonObject the json object
      */
     public void readMovie(JSONObject jsonObject){
-        Movie movie = new Movie();
-        Coordinates coordinates = new Coordinates();
-        Person person = new Person();
-        Location location = new Location();
+        try{
+            Movie movie = new Movie();
+            Coordinates coordinates = new Coordinates();
+            Person person = new Person();
+            Location location = new Location();
 
-        JSONObject cord = (JSONObject) jsonObject.get("coordinates");
-        coordinates.setX(Integer.parseInt((String) cord.get("x")));
-        coordinates.setY(Float.parseFloat((String) cord.get("y")));
+            JSONObject cord = (JSONObject) jsonObject.get("coordinates");
+            coordinates.setX(Integer.parseInt((String) cord.get("x")));
+            coordinates.setY(Float.parseFloat((String) cord.get("y")));
 
-        JSONObject direct = (JSONObject) jsonObject.get("director");
-        person.setName((String) direct.get("name"));
+            JSONObject direct = (JSONObject) jsonObject.get("director");
+            person.setName((String) direct.get("name"));
 
-        JSONObject loc = (JSONObject) direct.get("location");
-        location.setX(Double.parseDouble((String) loc.get("x")));
-        location.setY(Integer.parseInt((String) loc.get("y")));
-        location.setZ(Float.parseFloat((String) loc.get("z")));
+            JSONObject loc = (JSONObject) direct.get("location");
+            location.setX(Double.parseDouble((String) loc.get("x")));
+            location.setY(Integer.parseInt((String) loc.get("y")));
+            location.setZ(Float.parseFloat((String) loc.get("z")));
 
-        if(direct.containsKey("weight")) {
-            person.setWeight(Float.parseFloat((String) direct.get("weight")));
-        }
-        if(direct.containsKey("eyeColor")) {
-            String eyeColor = (String) direct.get("eyeColor");
-            for (model.colorEyes.Color color : model.colorEyes.Color.values()) {
-                if (color.name().equals(eyeColor)) {
-                    person.setEyeColor(color);
+            if(direct.containsKey("weight")) {
+                person.setWeight(Float.parseFloat((String) direct.get("weight")));
+            }
+            if(direct.containsKey("eyeColor")) {
+                String eyeColor = (String) direct.get("eyeColor");
+                for (model.colorEyes.Color color : model.colorEyes.Color.values()) {
+                    if (color.name().equals(eyeColor)) {
+                        person.setEyeColor(color);
+                    }
                 }
             }
-        }
-        String hairColor = (String) direct.get("hairColor");
-        for(model.colorHair.Color color : model.colorHair.Color.values()){
-            if(color.name().equals(hairColor)){
-                person.setHairColor(color);
-            }
-        }
-        String country = (String) direct.get("nationality");
-        for(Country eCountry : Country.values()){
-            if(eCountry.name().equals(country)){
-                person.setNationality(eCountry);
-            }
-        }
-        person.setLocation(location);
-
-        movie.setId(Integer.parseInt((String) jsonObject.get("id")));
-        movie.setName((String)jsonObject.get("name"));
-        movie.setCoordinates(coordinates);
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_ZONED_DATE_TIME;
-        movie.setCreationDate(ZonedDateTime.parse((String) jsonObject.get("creationDate"), formatter));
-        movie.setOscarsCount(Integer.parseInt((String) jsonObject.get("oscarsCount")));
-        String genre = (String) jsonObject.get("genre");
-        for(MovieGenre eGenre : MovieGenre.values()){
-            if(eGenre.name().equals(genre)){
-                movie.setGenre(eGenre);
-            }
-        }
-
-        if(jsonObject.containsKey("mpaRating")){
-            String mpaaRating = (String) jsonObject.get("mpaaRating");
-            for(MpaaRating rating : MpaaRating.values()){
-                if(rating.name().equals(mpaaRating)){
-                    movie.setMpaaRating(rating);
+            String hairColor = (String) direct.get("hairColor");
+            for(model.colorHair.Color color : model.colorHair.Color.values()){
+                if(color.name().equals(hairColor)){
+                    person.setHairColor(color);
                 }
             }
+            String country = (String) direct.get("nationality");
+            for(Country eCountry : Country.values()){
+                if(eCountry.name().equals(country)){
+                    person.setNationality(eCountry);
+                }
+            }
+            person.setLocation(location);
+
+            movie.setId(Integer.parseInt((String) jsonObject.get("id")));
+            movie.setName((String)jsonObject.get("name"));
+            movie.setCoordinates(coordinates);
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_ZONED_DATE_TIME;
+            movie.setCreationDate(ZonedDateTime.parse((String) jsonObject.get("creationDate"), formatter));
+            movie.setOscarsCount(Integer.parseInt((String) jsonObject.get("oscarsCount")));
+            String genre = (String) jsonObject.get("genre");
+            for(MovieGenre eGenre : MovieGenre.values()){
+                if(eGenre.name().equals(genre)){
+                    movie.setGenre(eGenre);
+                }
+            }
+
+            if(jsonObject.containsKey("mpaRating")){
+                String mpaaRating = (String) jsonObject.get("mpaaRating");
+                for(MpaaRating rating : MpaaRating.values()){
+                    if(rating.name().equals(mpaaRating)){
+                        movie.setMpaaRating(rating);
+                    }
+                }
+            }
+
+            movie.setDirector(person);
+            Main.arrayList.add(movie);
+
+
+        }catch (NullPointerException e){
+            System.out.println("Can not read movies from JSON. Some of required fields are missing");
+            System.exit(-1);
         }
-
-        movie.setDirector(person);
-
-        Main.arrayList.add(movie);
     }
 
     /**
      * Read json.
-     *
-     * @throws IOException    the io exception
-     * @throws ParseException the parse exception
      */
-    public void readJSON() throws IOException, ParseException {
-        Object obj = new JSONParser().parse(new FileReader(filleName));
+    public void readJSON()  {
+        Object obj = null;
+        try {
+            obj = new JSONParser().parse(new FileReader(filleName));
+        } catch (IOException e) {
+            System.out.println("Error during file reading. For correct work file must contain root element containing Movies array");
+            System.exit(-1);
+        } catch (ParseException e) {
+            System.out.println("Unable to parse file. For correct work file must contain root element containing Movies array");
+            System.exit(-1);
+        }
         JSONObject jo = (JSONObject) obj;
         JSONArray moviesArr = (JSONArray) jo.get("Movies");
+        if(moviesArr == null){
+            System.out.println("No Movies array in file. For correct work file must contain root element containing Movies array");
+            System.exit(-1);
+        }
         Iterator moviesItr = moviesArr.iterator();
 
         while (moviesItr.hasNext()) {

@@ -11,5 +11,6 @@ public class RemoveById implements Command{
 
     public RemoveById (CommandSystem commandSystem, int id){
         this.commandSystem = commandSystem;
+        this.id = id;
     }
 }
