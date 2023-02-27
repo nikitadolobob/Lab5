@@ -3,46 +3,42 @@ package main;
 import comandHandler.UserInput;
 import filler.JSONInput;
 import model.Movie;
-import org.json.simple.parser.ParseException;
-
-import java.io.File;
-import java.io.IOException;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 /**
- * Главный класс
+ * Главный класс, из которого запускается приложение.
  */
 public class Main {
     /**
-     * Колекция
+     * Коллекция, в которой хранятся фильмы.
      */
     public static ArrayList<Movie> arrayList = new ArrayList<Movie>();
     /**
-     * The constant counter.
+     * Счетчик элементов в коллекции (не нужен)
      */
     public static int counter = 0;
     /**
-     * The constant filleName.
+     * Имя файла, с которого считывается коллекция в формате JSON.
      */
     public static String filleName;
 
     /**
-     * The entry point of application.
+     * Функция, из которой запускается приложение.
      *
-     * @param args the input arguments
-     * @throws IOException    the io exception
-     * @throws ParseException the parse exception
+     * @param args Аргументы программы. Первым аргументом программа принимает JSON-файл, в котором описаны элементы коллекции.
      */
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) {
         filleName = args[0];
+
+        //Создание экземпляра класса, который считывает данные с заданного JSON-файла
+        JSONInput jsonInput = new JSONInput(filleName); //("/home/nikita/IdeaProjects/Lab5/src/main/java/sourse/Data.json");
+        jsonInput.readJSON();
 
         System.out.println("Welcome to the MOVIE_LISTER_3000!");
         System.out.println("If you don't now how to use this app, type 'help'.");
 
-        JSONInput jsonInput = new JSONInput(filleName); //("/home/nikita/IdeaProjects/Lab5/src/main/java/sourse/Data.json");
-        jsonInput.readJSON();
+        //Создание экземпляра класса, который считывает команды с консоли
         UserInput userInput = new UserInput();
         userInput.readCommands();
     }

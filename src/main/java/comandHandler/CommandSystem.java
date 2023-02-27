@@ -119,6 +119,10 @@ public class CommandSystem {
         System.out.println("Enter your next command: ");
     }
     public void removeById(int id){
+        if(id <= 0 || id >= Main.arrayList.size()) {
+            System.out.println("Id is incorrect. Can not remove element. Try again or enter another command.");
+            return;
+        }
         Main.arrayList.remove(id - 1);
 
         for (Movie movie : Main.arrayList) {
@@ -128,6 +132,10 @@ public class CommandSystem {
         System.out.println("Enter your next command: ");
     }
     public void removeLast(){
+        if(Main.arrayList.isEmpty()){
+            System.out.println("Can not remove last because collection is empty. Enter your next command");
+            return;
+        }
         Main.arrayList.remove(Main.arrayList.size() - 1);
         System.out.println("The last movie of the collection is successfully removed from it");
         System.out.println("Enter your next command: ");
@@ -155,6 +163,10 @@ public class CommandSystem {
         System.out.println("Enter your next command: ");
     }
     public void update(int id){
+        if(id <= 0 || id >= Main.arrayList.size()) {
+            System.out.println("Id is incorrect. Can not update element. Try again or enter another command.");
+            return;
+        }
         Movie movie = UserInput.readMovie();
         if(movie == null){
             return;
@@ -163,7 +175,7 @@ public class CommandSystem {
         movie.setCreationDate(Main.arrayList.get(id - 1).getCreationDate());
         Main.arrayList.remove(id - 1);
         Main.arrayList.add(id - 1, movie);
-        System.out.println("The movie is successfully updared");
+        System.out.println("The movie is successfully updgared");
         System.out.println("Enter your next command: ");
     }
 

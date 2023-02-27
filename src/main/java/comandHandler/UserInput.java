@@ -68,11 +68,19 @@ public class UserInput {
                 if(i.getCommandName().equals(vector[0])){
                     isDumb = false;
                     if(vector[0].equals("execute_script") || vector[0].equals("update") || vector[0].equals("remove_by_id") || vector[0].equals("count_les_than_genre") || vector[0].equals("count_greater_than_genre") || vector[0].equals("filter_greater_than_genre")){
+                        if(vector.length < 2){
+                            messageWriter("This command should have argument");
+                            continue;
+                        }
                         if(vector[0].equals("execute_script") || vector[0].equals("count_les_than_genre") || vector[0].equals("count_greater_than_genre") || vector[0].equals("filter_greater_than_genre")){
                             i.runCommand(vector[1]);
                         }
                         else{
-                            i.runCommand(Integer.parseInt(vector[1]));
+                            try{
+                                i.runCommand(Integer.parseInt(vector[1]));
+                            }catch (NumberFormatException e){
+                                messageWriter("Command argument must be integer");
+                            }
                         }
                     }
                     else{
@@ -237,6 +245,7 @@ public class UserInput {
             for (model.colorHair.Color color : model.colorHair.Color.values()) {
                 messageWriter(color.name());
             }
+
             String hColour = sc.nextLine();
             for (model.colorHair.Color color : model.colorHair.Color.values()) {
                 if (color.name().equals(hColour)) {
@@ -253,12 +262,41 @@ public class UserInput {
                     director.setNationality(country);
                 }
             }
-            messageWriter("Enter double x coordinate of directors location");
-            double xl = sc.nextDouble();
-            messageWriter("Enter int y coordinate of directors location");
-            int yl = sc.nextInt();
-            messageWriter("Enter float z coordinate of directors location");
-            float zl = sc.nextFloat();
+
+            Double xl = null;
+            while (xl == null) {
+                messageWriter("Enter double x coordinate of directors location");
+                try {
+                    String s = sc.nextLine();
+                    xl = Double.parseDouble(s);
+                } catch (NumberFormatException e) {
+                    messageWriter("You should enter double value");
+                }
+            }
+
+
+            Integer yl = null;
+            while (yl == null) {
+                messageWriter("Enter int y coordinate of directors location");
+                try {
+                    String s = sc.nextLine();
+                    yl = Integer.parseInt(s);
+                } catch (NumberFormatException e) {
+                    messageWriter("You should enter integer value");
+                }
+            }
+
+            Float zl = null;
+            while (zl == null) {
+                messageWriter("Enter float z coordinate of directors location");
+                try {
+                    String s = sc.nextLine();
+                    zl = Float.parseFloat(s);
+                } catch (NumberFormatException e) {
+                    messageWriter("You should enter float value");
+                }
+            }
+
             Location location = new Location(xl, yl, zl);
             director.setLocation(location);
 
@@ -266,7 +304,7 @@ public class UserInput {
             return movie;
         }
         catch(NoSuchElementException e){
-            messageWriter("why the fuck did you give me a file, that asked me to create a movie and didn't have enough lines to let me do so? file ended earlier than it should have, so non of the unfinished data is in the collection now. So fuck off");
+            if(filleName != null) messageWriter("why the fuck did you give me a file, that asked me to create a movie and didn't have enough lines to let me do so? file ended earlier than it should have, so non of the unfinished data is in the collection now. So fuck off");
             return null;
         }
     }
