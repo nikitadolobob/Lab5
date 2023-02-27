@@ -189,7 +189,7 @@ public class UserInput {
             String rating = null;
             boolean isAnAss = true;
             while (isAnAss && rating == null) {
-                messageWriter("Choose one of the given geners and enter it (in caps)");
+                messageWriter("Choose one of the given ratings and enter it (in caps)");
                 for (MpaaRating mpaaRating : MpaaRating.values()) {
                     messageWriter(mpaaRating.name());
                 }
@@ -231,35 +231,84 @@ public class UserInput {
             }
             director.setWeight(weight);
 
-            messageWriter("Choose one of the given eye colors for the director (in caps)");
-            for (model.colorEyes.Color color : model.colorEyes.Color.values()) {
-                messageWriter(color.name());
-            }
-            String eColour = sc.nextLine();
-            for (model.colorEyes.Color color : model.colorEyes.Color.values()) {
-                if (color.name().equals(eColour)) {
-                    director.setEyeColor(color);
+            /*
+            String rating = null;
+            boolean isAnAss = true;
+            while (isAnAss && rating == null) {
+                messageWriter("Choose one of the given ratings and enter it (in caps)");
+                for (MpaaRating mpaaRating : MpaaRating.values()) {
+                    messageWriter(mpaaRating.name());
+                }
+                rating = sc.nextLine();
+                for (MpaaRating mpaaRating : MpaaRating.values()) {
+                    if (mpaaRating.name().equals(rating)) {
+                        movie.setMpaaRating(mpaaRating);
+                        isAnAss = false;
+                    }
+                }
+                if (isAnAss && !rating.equals("")) {
+                    rating = null;
+                    messageWriter("You either couldn't realise how to type the exact thing i asked you to type or just are an asshole. You have a list of options. Choose one and type it precisely and in caps");
                 }
             }
-            messageWriter("Choose one of the given hair colors for the director (in caps)");
-            for (model.colorHair.Color color : model.colorHair.Color.values()) {
-                messageWriter(color.name());
+             */
+            String eColour = null;
+            boolean isIncorrect = true;
+            while (isIncorrect && eColour == null){
+                messageWriter("Choose one of the given eye colors for the director (in caps) or enter empty line to nake it null");
+                for (model.colorEyes.Color color : model.colorEyes.Color.values()) {
+                    messageWriter(color.name());
+                }
+                eColour = sc.nextLine();
+                for (model.colorEyes.Color color : model.colorEyes.Color.values()) {
+                    if (color.name().equals(eColour)) {
+                        isIncorrect = false;
+                        director.setEyeColor(color);
+                    }
+                }
+                if(isIncorrect && !eColour.equals("")){
+                    messageWriter("No such eye color. Try again or enter empty line to stay it null");
+                    eColour = null;
+                }
             }
 
-            String hColour = sc.nextLine();
-            for (model.colorHair.Color color : model.colorHair.Color.values()) {
-                if (color.name().equals(hColour)) {
-                    director.setHairColor(color);
+            String hColour = null;
+            isIncorrect = true;
+            while (isIncorrect){
+                messageWriter("Choose one of the given hair colors for the director (in caps)");
+                for (model.colorHair.Color color : model.colorHair.Color.values()) {
+                    messageWriter(color.name());
+                }
+
+                hColour = sc.nextLine();
+                for (model.colorHair.Color color : model.colorHair.Color.values()) {
+                    if (color.name().equals(hColour)) {
+                        director.setHairColor(color);
+                        isIncorrect = false;
+                    }
+                }
+                if(isIncorrect){
+                    messageWriter("No such hair color!");
                 }
             }
-            messageWriter("Choose one of the given origine countries for the director (in caps)");
-            for (Country country : Country.values()) {
-                messageWriter(country.name());
-            }
-            String countryName = sc.nextLine();
-            for (Country country : Country.values()) {
-                if (country.name().equals(countryName)) {
-                    director.setNationality(country);
+
+
+            String countryName;
+            isIncorrect = true;
+            while (isIncorrect){
+                messageWriter("Choose one of the given origine countries for the director (in caps)");
+                for (Country country : Country.values()) {
+                    messageWriter(country.name());
+                }
+                countryName = sc.nextLine();
+                for (Country country : Country.values()) {
+                    if (country.name().equals(countryName)) {
+                        director.setNationality(country);
+                        isIncorrect = false;
+                    }
+                }
+                if(isIncorrect){
+                    messageWriter("No such country!");
                 }
             }
 
