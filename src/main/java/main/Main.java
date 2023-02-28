@@ -25,6 +25,11 @@ public class Main {
      * @param args Аргументы программы. Первым аргументом программа принимает JSON-файл, в котором описаны элементы коллекции.
      */
     public static void main(String[] args) {
+        if(args.length == 0){
+            System.out.println("There is JSON file, to read collection from");
+            System.out.println("Please, make sure to give a JSON file before starting the app");
+            System.exit(-1);
+        }
         filleName = args[0];
 
         //Создание экземпляра класса, который считывает данные с заданного JSON-файла
