@@ -1,17 +1,24 @@
 package comandHandler;
 
+import main.Main;
+
 /**
  * Элемент Pattern Command, описывающий конкретную команду Clear.
  */
 public class Clear implements Command{
-    private final CommandSystem commandSystem;
+    private void clear(){
+        Main.arrayList.clear();
+        System.out.println("The collection is empty now");
+        System.out.println("Enter your next command: ");
+    }
+
 
     /**
      * переопределённый метод, запускающий команду clear
      */
     @Override
     public void runCommand() {
-        commandSystem.clear();
+        this.clear();
     }
 
     /**
@@ -19,7 +26,7 @@ public class Clear implements Command{
      *
      * @param commandSystem элемент Pattern Command содержащий реализацию команды Clear
      */
-    public Clear(CommandSystem commandSystem){
-        this.commandSystem = commandSystem;
+    public Clear(){
+
     }
 }

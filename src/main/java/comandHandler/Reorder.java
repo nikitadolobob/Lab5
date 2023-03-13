@@ -1,17 +1,29 @@
 package comandHandler;
 
+import main.Main;
+import model.Movie;
+
+import java.util.Collections;
+
 /**
  * Элемент Pattern Command, описывающий конкретную команду reorder.
  */
 public class Reorder implements Command{
-    private final CommandSystem commandSystem;
+    private void reorder(){
+        Collections.reverse(Main.arrayList);
+        for(Movie movie : Main.arrayList){
+            movie.setId(Main.arrayList.indexOf(movie) + 1);
+        }
+        System.out.println("The movies in the collection reversed their order");
+        System.out.println("Enter your next command: ");
+    }
 
     /**
      * переопределённый метод, запускающий команду reorder
      */
     @Override
     public void runCommand() {
-        commandSystem.reorder();
+        this.reorder();
     }
 
     /**
@@ -19,7 +31,7 @@ public class Reorder implements Command{
      *
      * @param commandSystem элемент Pattern Command содержащий реализацию команды reorder
      */
-    public Reorder (CommandSystem commandSystem){
-        this.commandSystem = commandSystem;
+    public Reorder (){
+
     }
 }

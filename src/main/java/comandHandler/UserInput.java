@@ -53,19 +53,24 @@ public class UserInput {
      * @return Сформированная строка, без лишних пробелов
      */
     private static String removeFormer(String unformedRemover){
-        String[] former = unformedRemover.split(" ");
-        Vector<String> vector = new Vector<>();
-        for(String i : former){
-            if(!i.equals(" ")){
-                vector.add(i);
+        if(unformedRemover.trim().equals("")){
+            return "";
+        }
+        else {
+            String[] former = unformedRemover.split(" ");
+            Vector<String> vector = new Vector<>();
+            for (String i : former) {
+                if (!i.equals(" ")) {
+                    vector.add(i);
+                }
             }
+            String a = vector.get(0);
+            vector.remove(vector.get(0));
+            for (String i : vector) {
+                a += " " + i;
+            }
+            return a;
         }
-        String a = vector.get(0);
-        vector.remove(vector.get(0));
-        for(String i : vector){
-            a += " " + i;
-        }
-        return a;
     }
 
     /**
@@ -82,10 +87,20 @@ public class UserInput {
             }
         }
 
-        while(sc.hasNext()){
+        while(true){
             boolean isDumb = true;
-            String s = sc.nextLine();
+            String s;
+            try{
+                s = sc.nextLine();
+            }
+            catch(NoSuchElementException e) {
+                break;
+            }
             String a = removeFormer(s);
+            if(a.equals("")){
+                System.out.println("Hey you, motherfucker, enter something less empty than your dumb brainless scull");
+                continue;
+            }
             String[] vector = a.split(" ");
 
             for(Commands i : Commands.values()){
@@ -97,6 +112,20 @@ public class UserInput {
                             continue;
                         }
                         if(vector[0].equals("execute_script") || vector[0].equals("count_les_than_genre") || vector[0].equals("count_greater_than_genre") || vector[0].equals("filter_greater_than_genre")){
+                            if(vector[0].equals("execute_script")){
+                                if(filleName != null && filleName.equals(vector[1])){
+                                    System.out.println("Recursive script call. Command cancelled");
+                                    break;
+                                }
+                                else if(CommandSystem.execute_cnt > 0){
+                                    if(CommandSystem.execute_cnt % 10 == 0){
+                                        System.out.println("You have a lot of scripts inside of other scripts. Do you wanna to continue? Enter something if YES, stay line blank otherwise");
+                                        Scanner resp_sc = new Scanner(System.in);
+                                        String response = resp_sc.nextLine();
+                                        if(response.isEmpty()) break;
+                                    }
+                                }
+                            }
                             i.runCommand(vector[1]);
                         }
                         else{

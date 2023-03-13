@@ -4,7 +4,14 @@ package comandHandler;
  * Элемент Pattern Command, описывающий конкретную команду executeScript.
  */
 public class ExecuteScript implements Command{
-    private final CommandSystem commandSystem;
+    private void executeScript(String filleName){
+        System.out.println("Start reading script" + filleName);
+        CommandSystem.execute_cnt++;
+        UserInput userInput = new UserInput(filleName);
+        userInput.readCommands();
+        CommandSystem.execute_cnt--;
+        System.out.println("Script executing command finished. You may get to entering data by console");
+    }
     private final String filleName;
 
     /**
@@ -12,7 +19,7 @@ public class ExecuteScript implements Command{
      */
     @Override
     public void runCommand() {
-        commandSystem.executeScript(filleName);
+        this.executeScript(filleName);
     }
 
     /**
@@ -21,8 +28,7 @@ public class ExecuteScript implements Command{
      * @param commandSystem элемент Pattern Command содержащий реализацию команды executeScript
      * @param filleName имя вводимого пользователем файла, с которым будет работать экземпляр команды
      */
-    public ExecuteScript (CommandSystem commandSystem, String filleName){
-        this.commandSystem = commandSystem;
+    public ExecuteScript (String filleName){
         this.filleName = filleName;
     }
 }

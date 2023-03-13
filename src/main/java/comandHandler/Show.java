@@ -1,17 +1,27 @@
 package comandHandler;
 
+import main.Main;
+import model.Movie;
+
 /**
  * Элемент Pattern Command, описывающий конкретную команду show.
  */
 public class Show implements Command{
-    private final CommandSystem commandSystem;
+    private void show(){
+        for(Movie movie : Main.arrayList){
+            CommandSystem.printMovie(movie);
+            System.out.println("---------------------------------");
+        }
+        System.out.println("Command SHOW successfully finished");
+        System.out.println("Enter your next command: ");
+    }
 
     /**
      * переопределённый метод, запускающий команду show
      */
     @Override
     public void runCommand() {
-        commandSystem.show();
+        this.show();
     }
 
     /**
@@ -19,7 +29,7 @@ public class Show implements Command{
      *
      * @param commandSystem элемент Pattern Command содержащий реализацию команды show
      */
-    public Show (CommandSystem commandSystem){
-        this.commandSystem = commandSystem;
+    public Show (){
+
     }
 }
