@@ -8,6 +8,12 @@ import model.MovieGenre;
  * Элемент Pattern Command, описывающий конкретную команду CountLessThanGenre.
  */
 public class CountLessThanGenre implements Command{
+
+    /**
+     * Реализация команды, выводящей на консоль количество фильмов коллекции, жанр которых, в соответствие с полем genreRating, строго меньше заданного жанра
+     *
+     * @param genre заданный жанр, с которым производится сравнение
+     */
     private void countLessThanGenre(String genre){
         MovieGenre eGenre = null;
         int minGenreCount = 0;
@@ -41,7 +47,6 @@ public class CountLessThanGenre implements Command{
     /**
      * Конструктор экземпляра countLessThanGenre.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды countLessThanGenre
      * @param genre вводимый пользователь жанр, по которому будет происходить необходимое сравнение
      */
     public CountLessThanGenre (String genre){

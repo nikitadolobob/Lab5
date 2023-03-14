@@ -8,6 +8,12 @@ import model.MovieGenre;
  * Элемент Pattern Command, описывающий конкретную команду CountGreaterThanGenre.
  */
 public class CountGreaterThanGenre implements Command{
+
+    /**
+     * Реализация команды, выводящей на консоль количество фильмов коллекции, жанр которых, в соответствие с полем genreRating, строго больше заданного жанра
+     *
+     * @param genre Заданный жанр, с которым производится сравнение
+     */
     private void countGreaterThanGenre(String genre){
         MovieGenre eGenre = null;
         int maxGenreCount = 0;
@@ -41,7 +47,6 @@ public class CountGreaterThanGenre implements Command{
     /**
      * Конструктор экземпляра countGreaterThanGenre.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды countGreaterThanGenre
      * @param genre  вводимый пользователь жанр, по которому будет происходить необходимое сравнение
      */
     public CountGreaterThanGenre (String genre){

@@ -7,6 +7,10 @@ import model.Movie;
  * Элемент Pattern Command, описывающий конкретную команду add
  */
 public class Add implements Command {
+
+    /**
+     * Реализация команды, добавляющей новый фильм в конец коллекции
+     */
     private void add(){
         Movie movie = UserInput.readMovie();
         if(movie == null){
@@ -26,8 +30,6 @@ public class Add implements Command {
 
     /**
      * Конструктор экземпляра add
-     *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды add
-     */
+     **/
     public Add(){}
 }

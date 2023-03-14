@@ -6,6 +6,9 @@ import main.Main;
  * Элемент Pattern Command, описывающий конкретную команду info.
  */
 public class Info implements Command{
+    /**
+     * Реализация команды, выводящей на консоль информацию о коллекции(её размер и класс)
+     */
     private void info(){
         System.out.println("Information about collection:");
         System.out.println("Collection size: " + CommandSystem.arrayList.size());
@@ -24,7 +27,6 @@ public class Info implements Command{
     /**
      * Конструктор экземпляра info.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды info
      */
     public Info (){
 

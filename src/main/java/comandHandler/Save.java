@@ -7,6 +7,9 @@ import main.Main;
  * Элемент Pattern Command, описывающий конкретную команду save.
  */
 public class Save implements Command{
+    /**
+     * Реализация команды, сохраняющей коллекцию в нынешнем состоянии в стартовый файл
+     */
     private void save(){
         JSONOutput jsonOutput = new JSONOutput(CommandSystem.filleName);
         jsonOutput.writeJSON();
@@ -26,7 +29,6 @@ public class Save implements Command{
     /**
      * Конструктор экземпляра save.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды save
      */
     public Save (){
 

@@ -7,6 +7,9 @@ import model.Movie;
  * Элемент Pattern Command, описывающий конкретную команду show.
  */
 public class Show implements Command{
+    /**
+     * Реализация команды, выводящей на консоль все фильмы коллекции
+     */
     private void show(){
         for(Movie movie : CommandSystem.arrayList){
             CommandSystem.printMovie(movie);
@@ -27,7 +30,6 @@ public class Show implements Command{
     /**
      * Конструктор экземпляра show.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды show
      */
     public Show (){
 

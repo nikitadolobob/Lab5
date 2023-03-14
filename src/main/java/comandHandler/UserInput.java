@@ -176,10 +176,10 @@ public class UserInput {
 
         try {
             String name = "";
-            while (name.equals("")) {
-                messageWriter("Enter movie name");
+            while (name.trim().equals("")) {
+                messageWriter("Enter movie name. Movie name can't be empty.");
                 name = sc.nextLine();
-                messageWriter("name is " + name);
+                if(!name.trim().equals("")) messageWriter("Your movie name is " + name);
             }
             movie.setName(name);
 
@@ -271,8 +271,8 @@ public class UserInput {
 
             Person director = new Person();
             String directorName = "";
-            while (directorName.equals("")) {
-                messageWriter("Enter director name");
+            while (directorName.trim().equals("")) {
+                messageWriter("Enter director name. Director name can't be empty.");
                 directorName = sc.nextLine();
             }
             director.setName(directorName);

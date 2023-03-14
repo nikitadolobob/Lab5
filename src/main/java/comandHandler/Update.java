@@ -6,6 +6,12 @@ import model.Movie;
  * Элемент Pattern Command, описывающий конкретную команду update.
  */
 public class Update implements Command{
+
+    /**
+     * Реализация команды, позволяющая пользователю поочередно изменить каждое поле фильма коллекции с заданным id
+     *
+     * @param id - значения поля id фильма, поля которого пользователь будет менять
+     */
     private void update(int id){
         if(id <= 0 || id >= CommandSystem.arrayList.size()) {
             System.out.println("Id is incorrect. Can not update element. Try again or enter another command.");
@@ -36,7 +42,6 @@ public class Update implements Command{
     /**
      * Конструктор экземпляра update.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды update
      * @param id вводимое пользователем поле, по значению которого будет вычислен изменяемый элемент
      */
     public Update (int id){

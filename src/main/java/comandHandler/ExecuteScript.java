@@ -4,6 +4,12 @@ package comandHandler;
  * Элемент Pattern Command, описывающий конкретную команду executeScript.
  */
 public class ExecuteScript implements Command{
+
+    /**
+     * Реализация команды, выполняющей команды из файла, заданного пользователем
+     *
+     * @param filleName имя файла заданного пользователем
+     */
     private void executeScript(String filleName){
         System.out.println("Start reading script" + filleName);
         CommandSystem.execute_cnt++;
@@ -25,7 +31,6 @@ public class ExecuteScript implements Command{
     /**
      * Конструктор экземпляра executeScript.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды executeScript
      * @param filleName имя вводимого пользователем файла, с которым будет работать экземпляр команды
      */
     public ExecuteScript (String filleName){

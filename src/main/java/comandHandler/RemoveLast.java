@@ -4,6 +4,9 @@ package comandHandler;
  * Элемент Pattern Command, описывающий конкретную команду removeLast.
  */
 public class RemoveLast implements Command{
+    /**
+     * Реализация команды, удаляющей фильм из конца коллекции, если она не пуста
+     */
     private void removeLast(){
         if(CommandSystem.arrayList.isEmpty()){
             System.out.println("Can not remove last because collection is empty. Enter your next command");
@@ -26,7 +29,6 @@ public class RemoveLast implements Command{
     /**
      * Конструктор экземпляра removeLast.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды removeLast
      */
     public RemoveLast (){
 

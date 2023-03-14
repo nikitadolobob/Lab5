@@ -8,6 +8,14 @@ import model.MovieGenre;
  * Элемент Pattern Command, описывающий конкретную команду filterGreaterThanGenre.
  */
 public class FilterGreaterThanGenre implements Command{
+
+
+    /**
+     * Реализация команды, выводящей на консоль фильмы коллекции, жанр которых, в соответствие с полем genreRating, строго больше заданного жанра
+     *
+     * @param genre заданный жанр, с которым производится сравнение
+     */
+
     private void filterGreaterThanGenre(String genre){
         MovieGenre eGenre = null;
         for(MovieGenre iGenre : MovieGenre.values()){

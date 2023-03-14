@@ -67,6 +67,28 @@
       "genre": "DRAMA",
       "id": "3",
       "creationDate": "2023-02-12T20:00:21.369596063+03:00[Europe\/Moscow]"
+    },
+    {
+      "oscarsCount": "4",
+      "director": {
+        "nationality": "GERMANY",
+        "name": "3",
+        "weight": "4.0",
+        "location": {
+          "x": "4.0",
+          "y": "4",
+          "z": "4.0"
+        },
+        "hairColor": "RED"
+      },
+      "name": "testMov",
+      "coordinates": {
+        "x": "4",
+        "y": "4.0"
+      },
+      "genre": "DRAMA",
+      "id": "4",
+      "creationDate": "2023-02-12T20:00:21.369596063+03:00[Europe\/Moscow]"
     }
   ]
 }

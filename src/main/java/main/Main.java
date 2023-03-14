@@ -16,10 +16,6 @@ import java.util.ArrayList;
 public class Main {
 
     /**
-     * Имя файла, с которого считывается коллекция в формате JSON.
-     */
-
-    /**
      * Функция, из которой запускается приложение.
      *
      * @param args Аргументы программы. Первым аргументом программа принимает JSON-файл, в котором описаны элементы коллекции.
@@ -29,7 +25,8 @@ public class Main {
         if(args.length == 0){
             File f = new File("Collection.json");
             try {
-                f.createNewFile();
+                boolean created = f.createNewFile();
+                if(!created) throw new IOException();
             } catch (IOException e) {
                 System.out.println("You gave no file. Unable to create new file");
                 System.exit(-1);
@@ -40,7 +37,8 @@ public class Main {
             File f = new File(CommandSystem.filleName);
             if(!f.exists()){
                 try {
-                    f.createNewFile();
+                    boolean created = f.createNewFile();
+                    if(!created) throw new IOException();
                 } catch (IOException e) {
                     System.out.println("You gave not existing file. Unable to create new file");
                     System.exit(-1);

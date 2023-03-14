@@ -8,6 +8,10 @@ import java.util.Collections;
  * Элемент Pattern Command, описывающий конкретную команду addIfMin
  */
 public class AddIfMin implements Command{
+
+    /**
+     * Реализация команды, добавляющей новый фильм в конец коллекции, если этот элемент, в соотвествие с переопределённым для класса Movie методом compareTo, окажется строго меньше минимального элемента коллекции
+     */
     private void addIfMin(){
         Movie movie = UserInput.readMovie();
         if(movie == null){
@@ -34,7 +38,6 @@ public class AddIfMin implements Command{
     /**
      * Конструктор экземпляра addIfMin
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды addIfMin
      */
     public AddIfMin(){}
 }

@@ -9,6 +9,9 @@ import java.util.Collections;
  * Элемент Pattern Command, описывающий конкретную команду reorder.
  */
 public class Reorder implements Command{
+    /**
+     * Реализация команды, переставляющей элементы коллекции в обратном порядке
+     */
     private void reorder(){
         Collections.reverse(CommandSystem.arrayList);
         for(Movie movie : CommandSystem.arrayList){
@@ -29,7 +32,6 @@ public class Reorder implements Command{
     /**
      * Конструктор экземпляра reorder.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды reorder
      */
     public Reorder (){
 

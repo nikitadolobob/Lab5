@@ -7,6 +7,11 @@ import model.Movie;
  * Элемент Pattern Command, описывающий конкретную команду removeById.
  */
 public class RemoveById implements Command{
+    /**
+     * Реализация команды, удаляющей из коллекции фильм с заданным id
+     *
+     * @param id - значение поля id удаляемого фильма
+     */
     private void removeById(int id){
         if(id <= 0 || id >= CommandSystem.arrayList.size()) {
             System.out.println("Id is incorrect. Can not remove element. Try again or enter another command.");
@@ -34,7 +39,6 @@ public class RemoveById implements Command{
     /**
      * Конструктор экземпляра removeById.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды removeById
      * @param id вводимое пользователем поле, по значению которого будет вычислен удаляемый элемент
      */
     public RemoveById (int id){

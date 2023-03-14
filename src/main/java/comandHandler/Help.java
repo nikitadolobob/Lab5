@@ -4,6 +4,11 @@ package comandHandler;
  * Элемент Pattern Command, описывающий конкретную команду help.
  */
 public class Help implements Command{
+
+    /**
+     * Реализация команды, выводящей на консоль информацию о каждой команде приложения
+     */
+
     private void help(){
         for(Commands command : Commands.values()){
             System.out.println(command.commandName + ": " + command.description);
@@ -22,7 +27,6 @@ public class Help implements Command{
     /**
      * Конструктор экземпляра help.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды help
      */
     public Help (){
 
