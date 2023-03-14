@@ -14,10 +14,7 @@ import java.util.ArrayList;
  * Главный класс, из которого запускается приложение.
  */
 public class Main {
-    /**
-     * Коллекция, в которой хранятся фильмы.
-     */
-    public static ArrayList<Movie> arrayList = new ArrayList<Movie>();
+
     /**
      * Имя файла, с которого считывается коллекция в формате JSON.
      */

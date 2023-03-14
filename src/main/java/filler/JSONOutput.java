@@ -1,5 +1,6 @@
 package filler;
 
+import comandHandler.CommandSystem;
 import model.Movie;
 
 import main.Main;
@@ -32,7 +33,7 @@ public class JSONOutput {
     public void writeJSON(){
         JSONObject jsonObject = new JSONObject();
         JSONArray movies = new JSONArray();
-        for(Movie movie : Main.arrayList){
+        for(Movie movie : CommandSystem.arrayList){
             JSONObject currentMovie = new JSONObject();
             currentMovie.put("id", Integer.toString(movie.getId()));
             currentMovie.put("name", movie.getName());

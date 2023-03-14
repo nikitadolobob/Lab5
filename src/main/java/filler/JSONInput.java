@@ -1,5 +1,6 @@
 package filler;
 
+import comandHandler.CommandSystem;
 import model.*;
 import main.Main;
 import org.json.simple.JSONArray;
@@ -105,7 +106,7 @@ public class JSONInput {
             }
 
             movie.setDirector(person);
-            Main.arrayList.add(movie);
+            CommandSystem.arrayList.add(movie);
 
 
         }catch (NullPointerException e){

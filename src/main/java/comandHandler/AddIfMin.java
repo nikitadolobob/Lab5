@@ -1,6 +1,5 @@
 package comandHandler;
 
-import main.Main;
 import model.Movie;
 
 import java.util.Collections;
@@ -14,9 +13,9 @@ public class AddIfMin implements Command{
         if(movie == null){
             return;
         }
-        Movie minMovie = Collections.min(Main.arrayList);
+        Movie minMovie = Collections.min(CommandSystem.arrayList);
         if(movie.compareTo(minMovie) < 0){
-            Main.arrayList.add(movie);
+            CommandSystem.arrayList.add(movie);
             System.out.println("The movie is in the collection now");
         }
         else {

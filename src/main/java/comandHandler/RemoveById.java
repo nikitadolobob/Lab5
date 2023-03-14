@@ -8,14 +8,14 @@ import model.Movie;
  */
 public class RemoveById implements Command{
     private void removeById(int id){
-        if(id <= 0 || id >= Main.arrayList.size()) {
+        if(id <= 0 || id >= CommandSystem.arrayList.size()) {
             System.out.println("Id is incorrect. Can not remove element. Try again or enter another command.");
             return;
         }
-        Main.arrayList.remove(id - 1);
+        CommandSystem.arrayList.remove(id - 1);
 
-        for (Movie movie : Main.arrayList) {
-            movie.setId(Main.arrayList.indexOf(movie) + 1);
+        for (Movie movie : CommandSystem.arrayList) {
+            movie.setId(CommandSystem.arrayList.indexOf(movie) + 1);
         }
         System.out.println("Element is deleted");
         System.out.println("Enter your next command: ");

@@ -1,6 +1,5 @@
 package comandHandler;
 
-import main.Main;
 import model.Movie;
 
 /**
@@ -8,7 +7,7 @@ import model.Movie;
  */
 public class Update implements Command{
     private void update(int id){
-        if(id <= 0 || id >= Main.arrayList.size()) {
+        if(id <= 0 || id >= CommandSystem.arrayList.size()) {
             System.out.println("Id is incorrect. Can not update element. Try again or enter another command.");
             return;
         }
@@ -17,9 +16,9 @@ public class Update implements Command{
             return;
         }
         movie.setId(id);
-        movie.setCreationDate(Main.arrayList.get(id - 1).getCreationDate());
-        Main.arrayList.remove(id - 1);
-        Main.arrayList.add(id - 1, movie);
+        movie.setCreationDate(CommandSystem.arrayList.get(id - 1).getCreationDate());
+        CommandSystem.arrayList.remove(id - 1);
+        CommandSystem.arrayList.add(id - 1, movie);
         System.out.println("The movie is successfully updgared");
         System.out.println("Enter your next command: ");
     }

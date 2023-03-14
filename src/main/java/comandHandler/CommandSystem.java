@@ -4,6 +4,7 @@ import filler.JSONOutput;
 import main.Main;
 import model.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 /**
@@ -12,6 +13,11 @@ import java.util.Collections;
 public class CommandSystem {
     public static String filleName;
     public static int execute_cnt = 0;
+
+    /**
+     * Коллекция, в которой хранятся фильмы.
+     */
+    public static ArrayList<Movie> arrayList = new ArrayList<Movie>();
 
     /**
      * Реализация команды, добавляющей новый фильм в конец коллекции

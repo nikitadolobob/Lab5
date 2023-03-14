@@ -88,6 +88,7 @@ public class UserInput {
         }
 
         while(true){
+            if(filleName == null) System.out.print("Input: ");
             boolean isDumb = true;
             String s;
             try{
@@ -171,7 +172,7 @@ public class UserInput {
     public static Movie readMovie(){
 
         Movie movie = new Movie();
-        movie.setId(Main.arrayList.size() + 1);
+        movie.setId(CommandSystem.arrayList.size() + 1);
 
         try {
             String name = "";

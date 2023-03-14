@@ -20,7 +20,7 @@ public class FilterGreaterThanGenre implements Command{
             return;
         }
         System.out.println("Here is the list of better genered movies in the collection: ");
-        for(Movie movie : Main.arrayList){
+        for(Movie movie : CommandSystem.arrayList){
             if(movie.getGenre().genreRating > eGenre.genreRating){
                 CommandSystem.printMovie(movie);
                 System.out.println("----------------------------------");

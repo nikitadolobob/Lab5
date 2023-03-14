@@ -8,7 +8,7 @@ import model.Movie;
  */
 public class Show implements Command{
     private void show(){
-        for(Movie movie : Main.arrayList){
+        for(Movie movie : CommandSystem.arrayList){
             CommandSystem.printMovie(movie);
             System.out.println("---------------------------------");
         }

@@ -20,7 +20,7 @@ public class CountGreaterThanGenre implements Command{
             System.out.println("Listen here you dumbass asshole. Am i a fucking joke to you? What did i tell you to enter? Is it so hard? Is it so fucking hard, huh, motherfucker? Read the shit i asked you to do and do this one right this time dickhead");
             return;
         }
-        for(Movie movie : Main.arrayList){
+        for(Movie movie : CommandSystem.arrayList){
             if(movie.getGenre().genreRating > eGenre.genreRating){
                 maxGenreCount++;
             }

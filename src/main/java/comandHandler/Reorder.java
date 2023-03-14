@@ -10,9 +10,9 @@ import java.util.Collections;
  */
 public class Reorder implements Command{
     private void reorder(){
-        Collections.reverse(Main.arrayList);
-        for(Movie movie : Main.arrayList){
-            movie.setId(Main.arrayList.indexOf(movie) + 1);
+        Collections.reverse(CommandSystem.arrayList);
+        for(Movie movie : CommandSystem.arrayList){
+            movie.setId(CommandSystem.arrayList.indexOf(movie) + 1);
         }
         System.out.println("The movies in the collection reversed their order");
         System.out.println("Enter your next command: ");

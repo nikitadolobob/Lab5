@@ -12,7 +12,7 @@ public class Add implements Command {
         if(movie == null){
             return;
         }
-        Main.arrayList.add(movie);
+        CommandSystem.arrayList.add(movie);
         System.out.println("The movie is successfully added");
         System.out.println("Enter your next command: ");
     }
