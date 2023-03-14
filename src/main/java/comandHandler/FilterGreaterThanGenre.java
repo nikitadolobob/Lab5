@@ -50,7 +50,6 @@ public class FilterGreaterThanGenre implements Command{
     /**
      * Конструктор экземпляра filterGreaterThanGenre.
      *
-     * @param commandSystem элемент Pattern Command содержащий реализацию команды filterGreaterThanGenre
      * @param genre вводимый пользователь жанр, по которому будет происходить необходимое сравнение
      */
     public FilterGreaterThanGenre (String genre){
