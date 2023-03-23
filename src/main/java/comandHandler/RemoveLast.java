@@ -14,7 +14,7 @@ public class RemoveLast implements Command{
         }
         CommandSystem.arrayList.remove(CommandSystem.arrayList.size() - 1);
         System.out.println("The last movie of the collection is successfully removed from it");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
 
 

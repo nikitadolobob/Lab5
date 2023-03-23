@@ -26,7 +26,7 @@ public class Main {
             File f = new File("Collection.json");
             try {
                 boolean created = f.createNewFile();
-                if(!created) throw new IOException();
+                if(!created && !f.exists()) throw new IOException();
             } catch (IOException e) {
                 System.out.println("You gave no file. Unable to create new file");
                 System.exit(-1);

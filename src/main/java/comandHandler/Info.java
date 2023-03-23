@@ -13,7 +13,7 @@ public class Info implements Command{
         System.out.println("Information about collection:");
         System.out.println("Collection size: " + CommandSystem.arrayList.size());
         System.out.println("Collection type: " + CommandSystem.arrayList.getClass());
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
 
     /**

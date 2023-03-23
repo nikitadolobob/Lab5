@@ -13,7 +13,7 @@ public class Help implements Command{
         for(Commands command : Commands.values()){
             System.out.println(command.commandName + ": " + command.description);
         }
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
 
     /**

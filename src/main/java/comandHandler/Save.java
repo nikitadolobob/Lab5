@@ -14,7 +14,7 @@ public class Save implements Command{
         JSONOutput jsonOutput = new JSONOutput(CommandSystem.filleName);
         jsonOutput.writeJSON();
         System.out.println("The collection is saved to the file");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
 
 

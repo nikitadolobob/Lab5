@@ -11,12 +11,15 @@ public class Show implements Command{
      * Реализация команды, выводящей на консоль все фильмы коллекции
      */
     private void show(){
+        if(CommandSystem.arrayList.isEmpty()){
+            System.out.println("Collection is empty, so there is nothing to show.");
+        }
         for(Movie movie : CommandSystem.arrayList){
             CommandSystem.printMovie(movie);
             System.out.println("---------------------------------");
         }
         System.out.println("Command SHOW successfully finished");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
 
     /**

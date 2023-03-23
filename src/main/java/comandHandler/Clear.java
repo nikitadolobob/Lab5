@@ -11,7 +11,7 @@ public class Clear implements Command{
     private void clear(){
         CommandSystem.arrayList.clear();
         System.out.println("The collection is empty now");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
 
     /**

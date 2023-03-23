@@ -13,7 +13,7 @@ public class Update implements Command{
      * @param id - значения поля id фильма, поля которого пользователь будет менять
      */
     private void update(int id){
-        if(id <= 0 || id >= CommandSystem.arrayList.size()) {
+        if(id <= 0 || id > CommandSystem.arrayList.size()) {
             System.out.println("Id is incorrect. Can not update element. Try again or enter another command.");
             return;
         }
@@ -26,7 +26,7 @@ public class Update implements Command{
         CommandSystem.arrayList.remove(id - 1);
         CommandSystem.arrayList.add(id - 1, movie);
         System.out.println("The movie is successfully updgared");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
 
     private final int id;

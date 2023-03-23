@@ -32,7 +32,7 @@ public class CountGreaterThanGenre implements Command{
             }
         }
         System.out.println("Here you go, bro. There are: " + maxGenreCount + " of the more genred movies in the collection!");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
     private final String genre;
 

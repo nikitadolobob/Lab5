@@ -23,7 +23,7 @@ public class RemoveById implements Command{
             movie.setId(CommandSystem.arrayList.indexOf(movie) + 1);
         }
         System.out.println("Element is deleted");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
 
     private final int id;

@@ -32,7 +32,7 @@ public class CountLessThanGenre implements Command{
             }
         }
         System.out.println("Here you go, bro. There are: " + minGenreCount + " of the less genred movies in the collection!");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
     private final String genre;
 

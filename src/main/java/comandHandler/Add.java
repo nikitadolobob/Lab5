@@ -18,7 +18,7 @@ public class Add implements Command {
         }
         CommandSystem.arrayList.add(movie);
         System.out.println("The movie is successfully added");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
     /**
      * переопределённый метод, запускающий команду add

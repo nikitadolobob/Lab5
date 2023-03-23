@@ -35,7 +35,7 @@ public class FilterGreaterThanGenre implements Command{
             }
         }
         System.out.println("That's all of them!");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
     private final String genre;
 

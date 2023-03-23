@@ -18,7 +18,7 @@ public class Reorder implements Command{
             movie.setId(CommandSystem.arrayList.indexOf(movie) + 1);
         }
         System.out.println("The movies in the collection reversed their order");
-        System.out.println("Enter your next command: ");
+        UserInput.messageNewLineWriter("Enter your next command: ");
     }
 
     /**
