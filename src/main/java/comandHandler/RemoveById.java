@@ -13,7 +13,7 @@ public class RemoveById implements Command{
      * @param id - значение поля id удаляемого фильма
      */
     private void removeById(int id){
-        if(id <= 0 || id >= CommandSystem.arrayList.size()) {
+        if(id <= 0 || id > CommandSystem.arrayList.size()) {
             System.out.println("Id is incorrect. Can not remove element. Try again or enter another command.");
             return;
         }

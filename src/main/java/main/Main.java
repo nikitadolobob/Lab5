@@ -7,7 +7,7 @@ import model.Movie;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 
 
 /**
@@ -21,6 +21,8 @@ public class Main {
      * @param args Аргументы программы. Первым аргументом программа принимает JSON-файл, в котором описаны элементы коллекции.
      */
     public static void main(String[] args) {
+
+
         boolean isValidFile = false;
         if(args.length == 0){
             File f = new File("Collection.json");
@@ -59,5 +61,8 @@ public class Main {
         //Создание экземпляра класса, который считывает команды с консоли
         UserInput userInput = new UserInput();
         userInput.readCommands();
+
+
+
     }
 }
