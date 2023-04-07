@@ -82,13 +82,13 @@ public class UserInput {
             try {
                 sc = new Scanner(new File(filleName));
             } catch (FileNotFoundException e) {
-                messageNewLineWriter("Someone should've tought you how to look for filles, 'cause such file does not exist, so use this command again except with existing file");
+                messageNewLineWriter("No such file");
                 return;
             }
         }
 
         while(true){
-            if(filleName == null) System.out.print("Input: ");
+            if(filleName == null) System.out.print("&~ ");
             boolean isDumb = true;
             String s;
             try{
@@ -99,7 +99,6 @@ public class UserInput {
             }
             String a = removeFormer(s);
             if(a.equals("")){
-                System.out.println("Hey you, motherfucker, enter something less empty than your dumb brainless scull");
                 continue;
             }
             String[] vector = a.split(" ");
@@ -109,7 +108,7 @@ public class UserInput {
                     isDumb = false;
                     if(vector[0].equals("execute_script") || vector[0].equals("update") || vector[0].equals("remove_by_id") || vector[0].equals("count_les_than_genre") || vector[0].equals("count_greater_than_genre") || vector[0].equals("filter_greater_than_genre")){
                         if(vector.length < 2){
-                            messageNewLineWriter("This command should have argument");
+                            messageNewLineWriter("This command should have an argument");
                             continue;
                         }
                         if(vector[0].equals("execute_script") || vector[0].equals("count_les_than_genre") || vector[0].equals("count_greater_than_genre") || vector[0].equals("filter_greater_than_genre")){
@@ -144,7 +143,7 @@ public class UserInput {
             }
             if(isDumb){
                 messageNewLineWriter("You entered: " + s);
-                messageNewLineWriter("There is no such command you dumbAss shit. Use fucking help to learn what commands exist");
+                messageNewLineWriter("There is no such command");
             }
         }
         if(filleName != null){
@@ -189,7 +188,7 @@ public class UserInput {
             String name = "";
             while (name.trim().equals("")) {
                 messageNewLineWriter("Enter movie name. Movie name can't be empty.");
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~ ");
                 name = sc.nextLine();
                 if(!name.trim().equals("")) messageNewLineWriter("Your movie name is " + name);
             }
@@ -198,28 +197,29 @@ public class UserInput {
             Integer x = null;
             while (x == null) {
                 messageNewLineWriter("Enter Integer x coordinate");
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~ ");
                 try {
                     String s = sc.nextLine();
                     x = Integer.parseInt(s);
                 } catch (NumberFormatException e) {
-                    messageNewLineWriter("Hey, enter int number, you dumbass shit! I am not joking! I am gonna find you you dickhead and enter a ligit int number of bones i am gonna break in your stupid body");
+                    messageNewLineWriter("int number required ");
                 }
             }
             Float y = null;
             while (y == null || y > 208) {
                 if (y == null) {
-                    messageNewLineWriter("Enter Float y coordinate that is not greater 208");
-                    messageThisLineWriter("Input: ");
+                    messageNewLineWriter("Enter Float y coordinate that is not greater than 208");
+                    messageThisLineWriter("&~");
                 } else {
-                    messageNewLineWriter("Didn't i warn you? The number MUST be NOT GREATER THAT 208! Try again and remember: I WILL FUCKING FIND YOU!");
+                    messageNewLineWriter("Number must be greater 208");
+                    messageThisLineWriter("&~ ");
                 }
                 try {
                     String s = sc.nextLine();
                     y = Float.parseFloat(s);
                 } catch (NumberFormatException e) {
                     y = null;
-                    messageNewLineWriter("Hey, enter float number, you dumbass shit! I am not joking! I am gonna find you dickhead and enter a ligit float number of bones i am gonna break in your stupid body");
+                    messageNewLineWriter("Number is required");
                 }
             }
             Coordinates coordinates = new Coordinates(x, y);
@@ -229,29 +229,30 @@ public class UserInput {
             Integer oscarCount = null;
             while (oscarCount == null || oscarCount < 1) {
                 if (oscarCount == null) {
-                    messageNewLineWriter("Enter Integer amount of oscar nominations and don't forget to fuck off if your movie has non because you MUST enter ABOVE 0");
-                    messageThisLineWriter("Input: ");
+                    messageNewLineWriter("Enter Integer amount of oscar that is greater than 0");
+                    messageThisLineWriter("&~ ");
 
                 } else {
-                    messageNewLineWriter("Seems like you forgot of something. Don't be a dick -- enter above 0");
+                    messageNewLineWriter("number must be above 0");
+                    messageThisLineWriter("&~ ");
                 }
                 try {
                     String s = sc.nextLine();
                     oscarCount = Integer.parseInt(s);
                 } catch (NumberFormatException e) {
                     oscarCount = null;
-                    messageNewLineWriter("Hey, enter int number, you dumbass shit! I am not joking! I am gonna find you dickhead and enter a ligit int number of bones i am gonna break in your stupid body");
+                    messageNewLineWriter("Int number required");
                 }
             }
             movie.setOscarsCount(oscarCount);
 
             String genre = "";
             while (genre.equals("")) {
-                messageNewLineWriter("Choose one of the given geners and enter it (in caps)");
+                messageNewLineWriter("Choose one of the given genres and enter it (in caps)");
                 for (MovieGenre gener : MovieGenre.values()) {
                     messageNewLineWriter(gener.name());
                 }
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~");
                 genre = sc.nextLine();
                 boolean isAnAss = true;
                 for (MovieGenre gener : MovieGenre.values()) {
@@ -262,7 +263,7 @@ public class UserInput {
                 }
                 if (isAnAss) {
                     genre = "";
-                    messageNewLineWriter("You either couldn't realise how to type the exact thing i asked you to type or just are an asshole. You have a list of options. Choose one and type it precisely and in caps");
+                    messageNewLineWriter("Incorrect genre. Type one of the options from the list precisely");
                 }
             }
 
@@ -273,7 +274,7 @@ public class UserInput {
                 for (MpaaRating mpaaRating : MpaaRating.values()) {
                     messageNewLineWriter(mpaaRating.name());
                 }
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~");
                 rating = sc.nextLine();
                 for (MpaaRating mpaaRating : MpaaRating.values()) {
                     if (mpaaRating.name().equals(rating)) {
@@ -283,7 +284,7 @@ public class UserInput {
                 }
                 if (isAnAss && !rating.equals("")) {
                     rating = null;
-                    messageNewLineWriter("You either couldn't realise how to type the exact thing i asked you to type or just are an asshole. You have a list of options. Choose one and type it precisely and in caps");
+                    messageNewLineWriter("Incorrect rating. Type one of the options from the list precisely");
                 }
             }
 
@@ -291,17 +292,17 @@ public class UserInput {
             String directorName = "";
             while (directorName.trim().equals("")) {
                 messageNewLineWriter("Enter director name. Director name can't be empty.");
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~");
                 directorName = sc.nextLine();
             }
             director.setName(directorName);
 
             Float weight = null;
             messageNewLineWriter("Enter Float weight that is greater 0");
-            messageThisLineWriter("Input: ");
+            messageThisLineWriter("&~");
             while (weight == null || weight <= 0) {
                 if(weight != null){
-                    messageNewLineWriter("Didn't i warn you? The number MUST be GREATER THAT 0! Try again and remember: I WILL FUCKING FIND YOU!");
+                    messageNewLineWriter("Number greater than 0 required");
                 }
                 try {
                     String s = sc.nextLine();
@@ -309,7 +310,7 @@ public class UserInput {
                     weight = Float.parseFloat(s);
                 } catch (NumberFormatException e) {
                     weight = null;
-                    messageNewLineWriter("Hey, enter float number, you dumbass shit! I am not joking! I am gonna find you dickhead and enter a ligit float number of bones i am gonna break in your stupid body");
+                    messageNewLineWriter("Number is required");
                 }
             }
             director.setWeight(weight);
@@ -317,11 +318,11 @@ public class UserInput {
             String eColour = null;
             boolean isIncorrect = true;
             while (isIncorrect && eColour == null){
-                messageNewLineWriter("Choose one of the given eye colors for the director (in caps) or enter empty line to nake it null");
+                messageNewLineWriter("Choose one of the given eye colors for the director (in caps) or enter empty line to make it null");
                 for (model.colorEyes.Color color : model.colorEyes.Color.values()) {
                     messageNewLineWriter(color.name());
                 }
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~");
                 eColour = sc.nextLine();
                 for (model.colorEyes.Color color : model.colorEyes.Color.values()) {
                     if (color.name().equals(eColour)) {
@@ -330,7 +331,7 @@ public class UserInput {
                     }
                 }
                 if(isIncorrect && !eColour.equals("")){
-                    messageNewLineWriter("No such eye color. Try again or enter empty line to stay it null");
+                    messageNewLineWriter("No such eye color. Try again or enter empty line to set it null");
                     eColour = null;
                 }
             }
@@ -342,7 +343,7 @@ public class UserInput {
                 for (model.colorHair.Color color : model.colorHair.Color.values()) {
                     messageNewLineWriter(color.name());
                 }
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~");
                 hColour = sc.nextLine();
                 for (model.colorHair.Color color : model.colorHair.Color.values()) {
                     if (color.name().equals(hColour)) {
@@ -359,11 +360,11 @@ public class UserInput {
             String countryName;
             isIncorrect = true;
             while (isIncorrect){
-                messageNewLineWriter("Choose one of the given origine countries for the director (in caps)");
+                messageNewLineWriter("Choose one of the given origin countries for the director (in caps)");
                 for (Country country : Country.values()) {
                     messageNewLineWriter(country.name());
                 }
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~");
                 countryName = sc.nextLine();
                 for (Country country : Country.values()) {
                     if (country.name().equals(countryName)) {
@@ -379,7 +380,7 @@ public class UserInput {
             Double xl = null;
             while (xl == null) {
                 messageNewLineWriter("Enter double x coordinate of directors location");
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~");
                 try {
                     String s = sc.nextLine();
                     xl = Double.parseDouble(s);
@@ -392,7 +393,7 @@ public class UserInput {
             Integer yl = null;
             while (yl == null) {
                 messageNewLineWriter("Enter int y coordinate of directors location");
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~");
                 try {
                     String s = sc.nextLine();
                     yl = Integer.parseInt(s);
@@ -404,7 +405,7 @@ public class UserInput {
             Float zl = null;
             while (zl == null) {
                 messageNewLineWriter("Enter float z coordinate of directors location");
-                messageThisLineWriter("Input: ");
+                messageThisLineWriter("&~");
                 try {
                     String s = sc.nextLine();
                     zl = Float.parseFloat(s);
@@ -422,7 +423,7 @@ public class UserInput {
         catch(NoSuchElementException e){
             if(filleName != null) {
                 //System.out.println("error");
-                messageNewLineWriter("why the fuck did you give me a file, that asked me to create a movie and didn't have enough lines to let me do so? file ended earlier than it should have, so non of the unfinished data is in the collection now. So fuck off");
+                messageNewLineWriter("Some things from the script were not correct or were unfinished. No incorrect/unfinished data was taken into account");
             }
             return null;
         }

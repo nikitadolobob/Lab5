@@ -15,7 +15,7 @@ public class ExecuteScript implements Command{
     private void executeScript(String filleName){
         File f = new File(filleName);
         if(!f.exists()){
-            System.out.println("Such filleName does not exist. Make sure you entered ABSOLUTE PATH to the fille");
+            System.out.println("Such filleName does not exist. Make sure you entered ABSOLUTE PATH to the file");
             return;
                     }
         System.out.println("Start reading script" + filleName);
@@ -23,8 +23,7 @@ public class ExecuteScript implements Command{
         UserInput userInput = new UserInput(filleName);
         userInput.readCommands();
         CommandSystem.execute_cnt--;
-        System.out.println("Script executing command finished. You may get to entering data by console");
-        UserInput.messageNewLineWriter("Enter your next command: ");
+        System.out.println("Script executing command finished. You may get to entering data via console");
     }
     private final String filleName;
 

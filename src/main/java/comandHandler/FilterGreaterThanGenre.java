@@ -24,10 +24,10 @@ public class FilterGreaterThanGenre implements Command{
             }
         }
         if(eGenre == null){
-            System.out.println("Listen here you dumbass asshole. Am i a fucking joke to you? What did i tell you to enter? Is it so hard? Is it so fucking hard, huh, motherfucker? Read the shit i asked you to do and do this one right this time dickhead");
+            System.out.println("Incorrect genre");
             return;
         }
-        System.out.println("Here is the list of better genered movies in the collection: ");
+        System.out.println("Here is the list of better genred movies in the collection: ");
         for(Movie movie : CommandSystem.arrayList){
             if(movie.getGenre().genreRating > eGenre.genreRating){
                 CommandSystem.printMovie(movie);
